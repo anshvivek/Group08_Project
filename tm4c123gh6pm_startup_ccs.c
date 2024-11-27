@@ -33,8 +33,9 @@ void ResetISR(void);
 static void NmiSR(void);
 static void FaultISR(void);
 static void IntDefaultHandler(void);
-extern void ADC0SS3_Handler(void);
-
+extern void Timer0_Handler(void);   // Timer0 interrupt handler
+extern void ADC0Seq3_Handler(void);
+//static void GPIOPortE_Handler(void);
 
 //*****************************************************************************
 //
@@ -102,9 +103,9 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // ADC Sequence 0
     IntDefaultHandler,                      // ADC Sequence 1
     IntDefaultHandler,                      // ADC Sequence 2
-    ADC0SS3_Handler,                        // ADC Sequence 3
+    ADC0Seq3_Handler,                        // ADC Sequence 3
     IntDefaultHandler,                      // Watchdog timer
-    IntDefaultHandler,                      // Timer 0 subtimer A
+    Timer0_Handler,                         // Timer 0 subtimer A
     IntDefaultHandler,                      // Timer 0 subtimer B
     IntDefaultHandler,                      // Timer 1 subtimer A
     IntDefaultHandler,                      // Timer 1 subtimer B
